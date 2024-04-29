@@ -3,26 +3,38 @@ function freeTrail(){
     var lname=document.getElementById("lname").value;
     var email=document.getElementById("email").value;
     var password=document.getElementById("password").value;
-    var outputDiv = document.getElementById("output");
-    var userDiv = document.getElementById("user");
+    
   
 
     if (name.length < 4 || name.trim() === '') {
         alert("Username should contain at least four characters.");
         return;
     }
-    else if (password.length < 6 || password.length > 16|| password.trim() === '') {
-        alert("Password should be 6-12 characters long.");
+    if (password.length < 6 || password.length > 16|| password.trim() === '') {
+        alert("Password should be 6-16 characters long.");
         return;
     }
-    else if(password.uppercase===1 ||password.lowercase===1||password.trim()===''){
-    alert("atleast contains one uppercase or lowercase");
-return;
-}
-    else if(password  !== name){
-        alert("name and password is same");
+    if(!/[A-Z]/.test(password)){
+    alert(" Password atleast contains one uppercase");
+    return;
+    }
+    if(!/[a-z]/.test(password)){
+        alert("password atleast contain one lowercase");
         return;
     }
+    if(!/\d/.test(password)) {
+        alert("Password must contain at least one number.");
+        return;
+    }
+    if(!/[^A-Za-z0-9]/.test(password)){
+        alert("password must contains at least one special character");
+        return;
+    }
+    if(name===password){
+        alert("username and password not same");
+        return;
+    }
+    return "validation successful!";
     
 }
 
@@ -35,6 +47,17 @@ return;
 
 
 
+
+
+
+
+
+
+
+
+
+
+    
 
 
 
